@@ -80,11 +80,15 @@ The GCC flag `-latomic` is not being added automatically with specific architect
 - If they are working, then it is an issue specific to your file manager (see below for a potential work around).
 - If only a few format have working thumbnails, then it is an issue with the mime types database.
 - If no formats have working thumbnails, then it is can be an issue with sandboxing or with the `f3d-plugin-xxx.thumbnailer` files.
-- If only big file do not have thumbnails, this is intended, you can modify this behavior in the `thumbnail.d/10_global.json` configuration folder using the `max-size` option.
+- If only big file do not have thumbnails, this is intended, you can modify this behavior in the `thumbnail.d/05_all.json` configuration folder using the `max-size` option.
 
 > `--rendering-backend` CLI option is not working as expected
 
 Dynamically switching rendering backend require VTK 9.4.0, you may need to update VTK or to use our [binary release](INSTALLATION.md).
+
+> I'm unable to link C++ examples against my local F3D install directory, it complains about missing VTK symbols
+
+Make sure to have VTK installed in your system or to add VTK install lib directory to `LD_LIBRARY_PATH`.
 
 ## Windows
 
@@ -125,9 +129,7 @@ Your previous F3D installation is current being used to generate thumbnails, wai
 
 > When running F3D without interactivity (e.g. `f3d.exe --version`) from CLI, nothing is displayed.
 
-It's a limitation from the Windows "subsystem".
-You can workaround the issue by piping to a file (`f3d.exe --version > file.txt`) and read the file.
-Another solution is recompiling F3D with the CMake option `F3D_WINDOWS_GUI` disabled.
+It's a limitation from the Windows "subsystem". Use `f3d-console.exe` instead.
 
 > When playing an animation, the animation appear to move too slowly
 
